@@ -150,43 +150,14 @@ public class Task5 {
       Validate "Debit Movement 5000 Credit Movement 0"
       Drag and drop Second 5000 to Credit side Amount
       Validate "Debit Movement 5000 Credit Movement 5000"
-Drag and drop the "BANK" Debit side Account
-Validate BANK is displayed
-Drag and drop the "SALES" Credit side Account
-Validate SALES is displayed (edited)
+      Drag and drop the "BANK" Debit side Account
+      Validate BANK is displayed
+      Drag and drop the "SALES" Credit side Account
+      Validate SALES is displayed (edited)
      */
 
 
-    @Test
-
-    public void test4() throws InterruptedException {
-
-        // -5000
-        driver.get("http://demo.guru99.com/test/drag_drop.html");
-        js.executeScript("window.scrollBy(0,300)");
-        WebElement orangeButton = driver.findElement(By.xpath("//li[@id='credit']/child::a"));     //      "//*[@id='credit']/a "
-        actions.clickAndHold(orangeButton).moveByOffset(0,-50).perform();
-
-        WebElement text = driver.findElement(By.id("e1"));
-        String actualText = text.getText();
-        String expectedText = "Please select another block";
-        softAssert.assertEquals(actualText,expectedText);
-        System.out.println(actualText);
-        System.out.println(expectedText);
-
-        Thread.sleep(2000);
-
-
-        // first 5000
-
-        WebElement orangeButton2 = driver.findElement(By.xpath("//li[@id='fourth']/child::a[text()=' 5000 ']"));
-        WebElement destinationDebit = driver.findElement(By.xpath("//*[@id='amt7']/li"));
-        actions.dragAndDrop(orangeButton2,destinationDebit).perform();
-
-
-
-
-    }
+ 
 
 
         @Test
@@ -220,64 +191,6 @@ Validate SALES is displayed (edited)
             actions.clickAndHold(sales).moveToElement(salesCreditMovement).release().perform();
             Assert.assertEquals(sales.getText(),"SALES");
     }
-
-
-    /*
-    Navigate to "http://www.popuptest.com/popuptest4.html"
-    Hover over to "Mouseover PopUp"
-    Validate the size of opened window is equals to 3
-    Validate new window titles are matching with today's date
-    Validate new window url contains "popup9"
-    Validate other new window url contains "popup10"
-     */
-
-    @Test
-    public void test5(){
-        driver.get("http://www.popuptest.com/popuptest4.html/");
-        js.executeScript("window.scrollBy(0,300)");
-
-
-
-    }
-
-    /*
-    Navigate to "http://seleniumpractise.blogspot.com/2017/"
-Click the text "Click here for Facebook" Test Link
-Enter First name "Techtorial"
-Enter Last name "Academy"
-Enter phone number "2223334455"
-Enter the password "techtorial123"
-Select "April" + "20" + "2002"
-Select Gender Custom
-Close the facebook page
-Validate the title equals to "Selenium Practise: 2017"
-     */
-
-    @Test
-
-    public void test6(){
-        driver.get("http://seleniumpractise.blogspot.com/2017/");
-        WebElement facebook = driver.findElement(By.linkText("Click here for Facebook"));
-        facebook.click();
-
-        driver.findElement(By.cssSelector("//a[contains(@id,'')]")).click();
-
-
-
-
-
-        /*WebElement firstName = driver.findElement(By.id("email"));
-        firstName.sendKeys("Techtorial");
-
-        WebElement lastName = driver.findElement(By.id("pass"));
-        lastName.sendKeys("Academy");
-
-         */
-
-
-
-    }
-
 
 
 
